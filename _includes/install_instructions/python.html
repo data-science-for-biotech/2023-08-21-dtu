@@ -51,6 +51,14 @@ https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatib
           <li>Open <a href="https://www.anaconda.com/products/individual#download-section">https://www.anaconda.com/products/individual#download-section</a> with your web browser.</li>
           <li>Download the Anaconda for Windows installer with Python 3. (If you are not sure which version to choose, you probably want the 64-bit Graphical Installer <em>Anaconda3-...-Windows-x86_64.exe</em>)</li>
           <li>Install Python 3 by running the Anaconda Installer, using all of the defaults for installation <em>except</em> make sure to check <strong>Add Anaconda to my PATH environment variable</strong>.</li>
+          <li>In order to use the Bash shell from Jupyter later, you need to run some extra setup:
+            <ol>
+              <li>From your start menu, go to Anaconda and open an "Anaconda Prompt (code)"</li>
+              <li>In the terminal window that opens, type "jupyter lab --generate-config" and hit return.</li>
+              <li>In the terminal window, type "cd .jupyter" and hit return.</li>
+              <li>In the terminal window, type "curl -sSF https://raw.githubusercontent.com/data-science-for-biotech/2021-05-18-dtu/gh-pages/files/jupyter_notebook_config.py" and hit return.</li>
+            </ol>
+          </li>
         </ol>
         <h4>Video Tutorial</h4>
         <div class="yt-wrapper2">

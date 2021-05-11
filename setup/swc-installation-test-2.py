@@ -40,24 +40,9 @@ dependency.
 # user's system for debugging purposes while the latter prints some
 # suggestions to follow.
 
-
-from __future__ import print_function  # for Python 2.6 compatibility
-
 import distutils.ccompiler as _distutils_ccompiler
 import fnmatch as _fnmatch
-try:  # Python 2.7 and 3.x
-    import importlib as _importlib
-except ImportError:  # Python 2.6 and earlier
-    class _Importlib (object):
-        """Minimal workarounds for functions we need
-        """
-        @staticmethod
-        def import_module(name):
-            module = __import__(name)
-            for n in name.split('.')[1:]:
-                module = getattr(module, n)
-            return module
-    _importlib = _Importlib()
+import importlib as _importlib
 import logging as _logging
 import os as _os
 import platform as _platform
@@ -65,18 +50,8 @@ import re as _re
 import shlex as _shlex
 import subprocess as _subprocess
 import sys as _sys
-try:  # Python 3.x
-    import urllib.parse as _urllib_parse
-except ImportError:  # Python 2.x
-    import urllib as _urllib_parse  # for quote()
+import urllib.parse as _urllib_parse
 import xml.etree.ElementTree as _element_tree
-
-
-if not hasattr(_shlex, 'quote'):  # Python versions older than 3.3
-    # Use the undocumented pipes.quote()
-    import pipes as _pipes
-    _shlex.quote = _pipes.quote
-
 
 __version__ = '0.1'
 
@@ -90,19 +65,19 @@ CHECKS = [
     'virtual-browser',
 # Version control
     'git',
-    'hg',              # Command line tool
+    #'hg',              # Command line tool
     #'mercurial',       # Python package
-    'EasyMercurial',
+    #'EasyMercurial',
 # Build tools and packaging
     'make',
     'virtual-pypi-installer',
     'setuptools',
     #'xcode',
 # Testing
-    'nosetests',       # Command line tool
-    'nose',            # Python package
-    'py.test',         # Command line tool
-    'pytest',          # Python package
+    #'nosetests',       # Command line tool
+    #'nose',            # Python package
+    #'py.test',         # Command line tool
+    #'pytest',          # Python package
 # SQL
     'sqlite3',         # Command line tool
     'sqlite3-python',  # Python package
@@ -569,10 +544,7 @@ class UserTaskDependency (Dependency):
         self.prompt = prompt
 
     def _check(self):
-        if _sys.version_info >= (3, ):
-            result = input(self.prompt)
-        else:  # Python 2.x
-            result = raw_input(self.prompt)
+        result = input(self.prompt)
         return self._check_result(result)
 
     def _check_result(self, result):

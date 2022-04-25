@@ -49,23 +49,38 @@ https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatib
       <article role="tabpanel" class="tab-pane active" id="python-windows">
         <ol>
           <li>Open <a href="https://www.anaconda.com/products/individual#download-section">https://www.anaconda.com/products/individual#download-section</a> with your web browser.</li>
-          <li>Download the Anaconda for Windows installer with Python 3. (If you are not sure which version to choose, you probably want the 64-bit Graphical Installer <em>Anaconda3-...-Windows-x86_64.exe</em>)</li>
-          <li>Install Python 3 by running the Anaconda Installer, using all of the defaults for installation <em>except</em> make sure to check <strong>Add Anaconda to my PATH environment variable</strong>.</li>
-          <li>In order to use the Bash shell from Jupyter later, you need to run some extra setup:
-            <ol>
-              <li>From your start menu, go to Anaconda and open an "Anaconda Prompt (code)"</li>
-              <li>In the terminal window that opens, type "jupyter lab --generate-config" and hit return.</li>
-              <li>In the terminal window, type "cd .jupyter" and hit return.</li>
-              <li>In the terminal window, type "curl -sSfO https://raw.githubusercontent.com/data-science-for-biotech/2021-05-18-dtu/gh-pages/files/jupyter_notebook_config.py" and hit return.</li>
-            </ol>
+          <li>Download the Anaconda Installer with Python 3 for Linux.<br>
+            (The installation requires using the shell. If you aren't
+            comfortable doing the installation yourself
+            stop here and request help at the workshop.)
+          </li>
+          <li>
+            Open a terminal window and navigate to the directory where
+            the executable is downloaded (e.g., `cd ~/Downloads`).
+          </li>
+          <li>
+            Type <pre>bash Anaconda3-</pre> and then press
+            <kbd>Tab</kbd> to autocomplete the full file name. The name of
+            file you just downloaded should appear.
+          </li>
+          <li>
+            Press <kbd>Enter</kbd>
+            (or <kbd>Return</kbd> depending on your keyboard).
+            You will follow the text-only prompts.
+            To move through the text, press <kbd>Spacebar</kbd>.
+            Type <code>yes</code> and press enter to approve the license.
+            Press <kbd>Enter</kbd> (or <kbd>Return</kbd>)
+            to approve the default location
+            for the files.
+            Type <code>yes</code> and press
+            <kbd>Enter</kbd> (or <kbd>Return</kbd>)
+            to prepend Anaconda to your <code>PATH</code>
+            (this makes the Anaconda distribution the default Python).
+          </li>
+          <li>
+            Close the terminal window.
           </li>
         </ol>
-        <h4>Video Tutorial</h4>
-        <div class="yt-wrapper2">
-        <div class="yt-wrapper">
-        <iframe type="text/html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" src="https://www.youtube-nocookie.com/embed/xxQ0mzZ8UvA?modestbranding=1&playsinline=1&iv_load_policy=3&rel=0" class="yt-frame" allowfullscreen></iframe>
-        </div>
-        </div>
       </article>
       <article role="tabpanel" class="tab-pane" id="python-macos">
         <ol>

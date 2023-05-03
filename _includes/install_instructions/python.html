@@ -61,8 +61,8 @@ https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatib
             <pre>cd ~</pre> and press <kbd>Enter</kbd> (or <kbd>Return</kbd> depending on your keyboard).
           </li>
           <li>Type
-            <pre>wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-          </pre> and press <kbd>Enter</kbd>
+            <pre>wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</pre> and press
+            <kbd>Enter</kbd>
           </li>
           <li>
             Type
@@ -88,7 +88,8 @@ https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatib
           <li>
             Close the terminal window and re-start the Terminal app one more time.
           </li>
-          <li>Type the following commands, hit <kbd>Enter</kbd> after each line: <code>
+          <li>Type the following commands, hit <kbd>Enter</kbd> after each line:
+            <pre>
 conda config --add channels defaults
 conda config --add channels bioconda
 conda config --add channels conda-forge
@@ -96,14 +97,16 @@ conda config --set channel_priority strict
 conda activate base
 conda update conda
 conda update --all
-            </code>
+          </pre>
           </li>
           <li>Lastly, to install Jupyter Lab and all dependencies, type the following commands, hit <kbd>Enter</kbd>
-            after each line: <code>
-            conda create -n jupyter python=3
-            conda activate jupyter
-            conda install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git
-          </code></li>
+            after each line:
+            <pre>
+conda create -n jupyter python=3
+conda activate jupyter
+conda install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git
+            </pre>
+          </li>
           <li>To check your install, type
             <pre>explorer.exe .</pre> in your WSL terminal and hit <kbd>Enter</kbd> to open an explorer window in your
             WSL home directory.

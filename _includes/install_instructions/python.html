@@ -13,11 +13,11 @@ https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatib
     research computing, and great for general-purpose programming as
     well. Installing all of its research packages individually can be
     a bit difficult, so we recommend
-    <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>.
+    <a href="https://github.com/conda-forge/miniforge#mambaforge">mambaforge</a>.
   </p>
 
   <p>
-    Why do we use miniconda for this course?
+    Why do we use mamba (and mambaforge) for this course?
   <ul>
     <li>The full Anaconda install contains many tools and libraries you don’t need
       <ul>
@@ -25,7 +25,9 @@ https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatib
         <li>Slower updates</li>
       </ul>
     </li>
-    <li>miniconda is a lean version just containing the core tools</li>
+    <li>mamba is a lean version just containing the core tools</li>
+    <li>mamba also is signifcantly faster at installing things than conda itself</li>
+    <li>mambaforge comes preconfigured with the important conda-forge repository</li>
     <li>Also see <a
         href="https://medium.com/dunder-data/anaconda-is-bloated-set-up-a-lean-robust-data-science-environment-with-miniconda-and-conda-forge-b48e1ac11646">https://medium.com/dunder-data/anaconda-is-bloated-set-up-a-lean-robust-data-science-environment-with-miniconda-and-conda-forge-b48e1ac11646</a>
       for a discussion</li>
@@ -61,12 +63,12 @@ https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatib
             <pre>cd ~</pre> and press <kbd>Enter</kbd> (or <kbd>Return</kbd> depending on your keyboard).
           </li>
           <li>Type
-            <pre>wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</pre> and press
+            <pre>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"</pre> and press
             <kbd>Enter</kbd>
           </li>
           <li>
             Type
-            <pre>bash Miniconda3-latest-Linux-x86_64.sh</pre> and then press <kbd>Enter</kbd>.
+            <pre>bash Mambaforge-$(uname)-$(uname -m).sh</pre> and then press <kbd>Enter</kbd>.
             You will follow the text-only prompts.
             To move through the text, press <kbd>Spacebar</kbd>.
             Type <code>yes</code> and press enter to approve the license.
@@ -75,14 +77,14 @@ https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatib
             for the files.
             Type <code>yes</code> and press
             <kbd>Enter</kbd> (or <kbd>Return</kbd>)
-            to prepend Anaconda to your <code>PATH</code>
-            (this makes the Anaconda distribution the default Python).
+            to prepend mamba to your <code>PATH</code>
+            (this makes the mamba distribution the default Python).
           </li>
           <li>
             Close the terminal window and re-start the Terminal app.
           </li>
           <li>Type
-            <pre>conda config --set auto_activate_base false</pre> and press <kbd>Enter</kbd> to stop conda from
+            <pre>mamba config --set auto_activate_base false</pre> and press <kbd>Enter</kbd> to stop conda from
             auto-activating.
           </li>
           <li>
@@ -90,21 +92,21 @@ https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatib
           </li>
           <li>Type the following commands, hit <kbd>Enter</kbd> after each line:
             <pre>
-conda config --add channels defaults
-conda config --add channels bioconda
-conda config --add channels conda-forge
-conda config --set channel_priority strict
-conda activate base
-conda update conda
-conda update --all
+mamba config --add channels defaults
+mamba config --add channels bioconda
+mamba config --add channels conda-forge
+mamba config --set channel_priority strict
+mamba activate base
+mamba update mamba
+mamba update --all
           </pre>
           </li>
           <li>Lastly, to install Jupyter Lab and all dependencies, type the following commands, hit <kbd>Enter</kbd>
             after each line:
             <pre>
-conda create -n jupyter python=3
-conda activate jupyter
-conda install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git
+mamba create -n jupyter python=3
+mamba activate jupyter
+mamba install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git
             </pre>
           </li>
           <li>To check your install, type
@@ -124,46 +126,16 @@ conda install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip
       </article>
       <article role="tabpanel" class="tab-pane" id="python-macos">
         <ol>
-          <li>Open <a
-              href="https://www.anaconda.com/products/individual#download-section">https://www.anaconda.com/products/individual#download-section</a>
-            with your web browser.</li>
-          <li>Download the Anaconda Installer with Python 3 for macOS (you can either use the Graphical or the Command
-            Line Installer).</li>
-          <li>Install Python 3 by running the Anaconda Installer using all of the defaults for installation.</li>
-        </ol>
-        <h4>Video Tutorial</h4>
-        <div class="yt-wrapper2">
-          <div class="yt-wrapper">
-            <iframe type="text/html" frameborder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              src="https://www.youtube-nocookie.com/embed/TcSAln46u9U?modestbranding=1&playsinline=1&iv_load_policy=3&rel=0"
-              class="yt-frame" allowfullscreen></iframe>
-          </div>
-        </div>
-      </article>
-      <article role="tabpanel" class="tab-pane" id="python-linux">
-        <ol>
-          <li>Open <a
-              href="https://www.anaconda.com/products/individual#download-section">https://www.anaconda.com/products/individual#download-section</a>
-            with your web browser.</li>
-          <li>Download the Anaconda Installer with Python 3 for Linux.<br>
-            (The installation requires using the shell. If you aren't
-            comfortable doing the installation yourself
-            stop here and request help at the workshop.)
+          <li>In your Terminal app, type
+            <pre>cd ~</pre> and press <kbd>Enter</kbd> (or <kbd>Return</kbd> depending on your keyboard).
           </li>
-          <li>
-            Open a terminal window and navigate to the directory where
-            the executable is downloaded (e.g., `cd ~/Downloads`).
+          <li>Type
+            <pre>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"</pre> and press
+            <kbd>Enter</kbd>
           </li>
           <li>
             Type
-            <pre>bash Anaconda3-</pre> and then press
-            <kbd>Tab</kbd> to autocomplete the full file name. The name of
-            file you just downloaded should appear.
-          </li>
-          <li>
-            Press <kbd>Enter</kbd>
-            (or <kbd>Return</kbd> depending on your keyboard).
+            <pre>bash Mambaforge-$(uname)-$(uname -m).sh</pre> and then press <kbd>Enter</kbd>.
             You will follow the text-only prompts.
             To move through the text, press <kbd>Spacebar</kbd>.
             Type <code>yes</code> and press enter to approve the license.
@@ -172,11 +144,103 @@ conda install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip
             for the files.
             Type <code>yes</code> and press
             <kbd>Enter</kbd> (or <kbd>Return</kbd>)
-            to prepend Anaconda to your <code>PATH</code>
-            (this makes the Anaconda distribution the default Python).
+            to prepend mamba to your <code>PATH</code>
+            (this makes the mamba distribution the default Python).
           </li>
           <li>
-            Close the terminal window.
+            Close the terminal window and re-start the Terminal app.
+          </li>
+          <li>Type
+            <pre>mamba config --set auto_activate_base false</pre> and press <kbd>Enter</kbd> to stop conda from
+            auto-activating.
+          </li>
+          <li>
+            Close the terminal window and re-start the Terminal app one more time.
+          </li>
+          <li>Type the following commands, hit <kbd>Enter</kbd> after each line:
+            <pre>
+mamba config --add channels defaults
+mamba config --add channels bioconda
+mamba config --add channels conda-forge
+mamba config --set channel_priority strict
+mamba activate base
+mamba update mamba
+mamba update --all
+          </pre>
+          </li>
+          <li>Lastly, to install Jupyter Lab and all dependencies, type the following commands, hit <kbd>Enter</kbd>
+            after each line:
+            <pre>
+mamba create -n jupyter python=3
+mamba activate jupyter
+mamba install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git
+            </pre>
+          </li>
+          <li>To check your install, download the <a href="setup/check_install.py">check_install.py</a> script.
+          </li>
+          <li>In the Terminal window, run
+            <pre>python3 ~/Download/check_install.py</pre>. If it prints
+            <pre>All dependencies installed!</pre> you're good to go.
+          </li>
+        </ol>
+      </article>
+      <article role="tabpanel" class="tab-pane" id="python-linux">
+        <ol>
+          <li>In a terminal window, type
+            <pre>cd ~</pre> and press <kbd>Enter</kbd> (or <kbd>Return</kbd> depending on your keyboard).
+          </li>
+          <li>Type
+            <pre>wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"</pre> and press
+            <kbd>Enter</kbd>
+          </li>
+          <li>
+            Type
+            <pre>bash Mambaforge-$(uname)-$(uname -m).sh</pre> and then press <kbd>Enter</kbd>.
+            You will follow the text-only prompts.
+            To move through the text, press <kbd>Spacebar</kbd>.
+            Type <code>yes</code> and press enter to approve the license.
+            Press <kbd>Enter</kbd> (or <kbd>Return</kbd>)
+            to approve the default location
+            for the files.
+            Type <code>yes</code> and press
+            <kbd>Enter</kbd> (or <kbd>Return</kbd>)
+            to prepend mamba to your <code>PATH</code>
+            (this makes the mamba distribution the default Python).
+          </li>
+          <li>
+            Close the terminal window and re-start the terminal.
+          </li>
+          <li>Type
+            <pre>mamba config --set auto_activate_base false</pre> and press <kbd>Enter</kbd> to stop conda from
+            auto-activating.
+          </li>
+          <li>
+            Close the terminal window and re-start the terminal one more time.
+          </li>
+          <li>Type the following commands, hit <kbd>Enter</kbd> after each line:
+            <pre>
+mamba config --add channels defaults
+mamba config --add channels bioconda
+mamba config --add channels conda-forge
+mamba config --set channel_priority strict
+mamba activate base
+mamba update mamba
+mamba update --all
+          </pre>
+          </li>
+          <li>Lastly, to install Jupyter Lab and all dependencies, type the following commands, hit <kbd>Enter</kbd>
+            after each line:
+            <pre>
+mamba create -n jupyter python=3
+mamba activate jupyter
+mamba install numpy pandas scikit-learn matplotlib jupyter jupyterlab altair pip git
+            </pre>
+          </li>
+          <li>To check your install, download the <a href="setup/check_install.py">check_install.py</a> script.
+          </li>
+          <li>In the Terminal window, run
+            <pre>python3 ~/Download/check_install.py</pre>. If it prints
+            <pre>All dependencies installed!</pre> you're good to go.
           </li>
         </ol>
       </article>
